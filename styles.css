@@ -55,6 +55,78 @@ body {
   font-weight: 500;
 }
 
+/* 悬停/聚焦显示字数规则的注释图标（CSS 气泡，替代无法美化的原生 title） */
+.hint-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-left: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  cursor: help;
+  vertical-align: middle;
+  user-select: none;
+  outline: none;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.hint-icon:hover,
+.hint-icon:focus {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.hint-icon::before,
+.hint-icon::after {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 10;
+}
+
+/* 气泡箭头 */
+.hint-icon::before {
+  content: "";
+  bottom: calc(100% + 0.3rem);
+  width: 0;
+  height: 0;
+  margin-left: 0.4rem;
+  border: 0.375rem solid transparent;
+  border-top-color: var(--text);
+  border-bottom-width: 0;
+}
+
+/* 气泡正文 */
+.hint-icon::after {
+  content: attr(data-tip);
+  bottom: calc(100% + 1rem);
+  padding: 0.35rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--card);
+  white-space: nowrap;
+  background: var(--text);
+  border-radius: 0.375rem;
+}
+
+.hint-icon:hover::before,
+.hint-icon:hover::after,
+.hint-icon:focus::before,
+.hint-icon:focus::after {
+  opacity: 1;
+  visibility: visible;
+}
+
 .input-wrap { position: relative; }
 
 .input {
@@ -110,9 +182,12 @@ body {
 
 .counter.is-over { color: var(--danger); }
 
-.hint {
-  font-size: 0.75rem;
-  color: var(--faint);
+/* 计数行字号更小，图标同步缩小避免撑高行盒 */
+.counter .hint-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  margin-left: 0.25rem;
+  font-size: 0.625rem;
 }
 
 .actions {

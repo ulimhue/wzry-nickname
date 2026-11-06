@@ -20,15 +20,16 @@
     <h1 class="title">王者荣耀重复名生成</h1>
 
     <div class="field">
-      <label class="label" for="name">输入名称（最多6个字，每2个半角字符算1个字）：</label>
+      <label class="label" for="name">输入名称</label>
       <div class="input-wrap">
         <input id="name" class="input" type="text" placeholder="留空则生成空白名"
           autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
         <button class="btn btn-clear" id="clearBtn">清空</button>
       </div>
       <div class="counter" id="counter">
-        当前字数：<span id="charCount">0</span>/6
-        <span class="hint">（隐形字符同样占用 6 字上限）</span>
+        当前字数：<span id="charCount">0</span>/6<span class="hint-icon" tabindex="0"
+          data-tip="1 个英文字母或数字计为 0.5 字"
+          aria-label="1 个英文字母或数字计为 0.5 字">?</span>
       </div>
     </div>
 

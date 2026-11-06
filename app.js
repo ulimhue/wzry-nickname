@@ -177,11 +177,6 @@ function generate() {
   document.getElementById("result").className = "result";
   renderOutput();
   updateActions();
-  setStatus(
-    "已生成 " + (visible ? Array.from(visible).length + " 个可见字符 + " : "纯空白名，") +
-    padCount + " 个隐形字符，共 " + (padCount + Array.from(visible).length) + "/6 个字位",
-    "ok"
-  );
 }
 
 async function copyResult() {
